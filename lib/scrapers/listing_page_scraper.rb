@@ -32,7 +32,7 @@ class ListingPageScraper
         puts "attaching image: #{full_path}"
         listing_image = ListingImage.new
         file = open full_path 
-        puts file
+        puts file.size
         listing_image.image = file
         listing_image.listing = @listing
         listing_image.save
