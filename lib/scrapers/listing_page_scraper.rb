@@ -16,7 +16,7 @@ class ListingPageScraper
     @urls.each do |uri|
       puts "scraping #{uri}"
       listing = ListingPage.new open(uri)
-      save_listing(listing, url) unless listing.short_sale?
+      save_listing(listing, uri) unless listing.short_sale?
     end
   end
 
