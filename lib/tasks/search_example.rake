@@ -7,8 +7,14 @@ require 'scrapers/listing_page_scraper.rb'
 namespace :mls do
 
   task :search do
+
+    require 'selenium/client'
+    require 'nokogiri'
+    require 'scrapers/result_page'
+
     links = Searcher.new.run_search
     File.open('./lib/assets/search_results.yml', 'w+') { |f| f.write YAML.dump(links) }
+    
   end
 
   task :scrape_results => :environment do

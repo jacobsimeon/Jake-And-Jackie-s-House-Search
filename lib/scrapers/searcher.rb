@@ -1,7 +1,3 @@
-require 'selenium/client'
-require 'nokogiri'
-require 'scrapers/result_page'
-
 class Searcher
   attr_accessor :listing_urls
   attr_accessor :links
