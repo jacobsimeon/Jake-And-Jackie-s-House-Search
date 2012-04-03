@@ -1,0 +1,86 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Jacob & Jackie's Potential Future Home List</a>
+      <div class="nav-collapse pull-right">
+        <ul class="nav">
+          <li><a href="/listings">All</a></li>
+          <li><a href="?interested=true">Favorites</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h1 class="span5" style="padding-bottom: 10px">A List of <%= @listings.count %>  homes</h1>
+  </div>
+
+  <div class="row">
+    <div class="pull-right">
+      <%= will_paginate @listings %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @listings.each do |listing| %>
+      <div class="span4 pull-left listing">
+        <div style="margin: 10px" >
+          <div class="row">
+
+            <h3 class="address span3">
+              <%= link_to listing.street_address, listing.url %>
+            </h3>
+
+            <div class="btn-group pull-right">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                Mark
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <%= link_to 'Interested', interested_path(listing), :method => "put" %> 
+                <%= link_to 'Not Interested', listing_path(listing), :method => "delete" %> 
+                <!-- dropdown menu links -->
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="span3" >
+              <%= link_to listing_image(listing), listing_path(listing), :class => "listing-details" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <h3 class="span2">
+              $<%= listing.price %>
+            </h3>
+            <h5 class="pull-right">
+              MLS #<%= listing.mls_number %>
+            </h5>
+          </div>
+
+          <div class="row">
+            <h5 class="span3">
+              <%= listing.city %>, <%= listing.state %> <%= listing.zip %>
+            </h5>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="pull-right">
+      <%= will_paginate @listings %>
+    </div>
+  </div>
+
+</div> <!-- /container -->
