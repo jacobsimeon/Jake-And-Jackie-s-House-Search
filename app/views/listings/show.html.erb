@@ -15,7 +15,7 @@
   </div>
 
   <div class="modal-footer">
-    <a class="btn btn-danger">Not Interested</a>
-    <a class="btn btn-success">Interested</a>
+    <%= link_to 'Not Interested', listing_path(@listing), :method => "delete", :class => "btn btn-danger" %>
+    <%= link_to 'Interested', interested_path(@listing), :method => "put", :class => "btn btn-primary" %> 
   </div>
 </div>

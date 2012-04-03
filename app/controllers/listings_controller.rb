@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
     if params[:interested]
       @listings = Listing.where :interested => true
     else
-      @listings = Listing.where :not_interested => false 
+      @listings = Listing.where(:not_interested => false, :interested => false)
     end
     @listings = @listings.paginate :page => params[:page]
   end

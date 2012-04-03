@@ -5,7 +5,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Jacob & Jackie's Potential Future Home List</a>
+      <a class="brand" href="#">
+        <%= @listings.count %>  homes
+      </a>
       <div class="nav-collapse pull-right">
         <ul class="nav">
           <li><a href="/listings">All</a></li>
@@ -19,7 +21,6 @@
 <div class="container">
 
   <div class="row">
-    <h1 class="span5" style="padding-bottom: 10px">A List of <%= @listings.count %>  homes</h1>
     <div class="pull-right">
       <%= will_paginate @listings %>
     </div>
