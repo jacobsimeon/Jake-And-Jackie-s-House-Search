@@ -8,6 +8,7 @@ gem "paperclip", "~> 3.0"
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,7 +20,6 @@ end
 
 group :test do
   gem 'selenium-client'
-  gem 'nokogiri'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
