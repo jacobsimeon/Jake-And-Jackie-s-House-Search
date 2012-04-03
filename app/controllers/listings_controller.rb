@@ -1,7 +1,15 @@
 class ListingsController < ApplicationController
+  before_filter do
+    @sections = ['undecided', 'interested', 'not_interested']
+    @active_section = (params[:list] || "undecided").downcase
+  end
+
   def index
-    if params[:interested]
+    case @active_section 
+    when "interested"
       @listings = Listing.where :interested => true
+    when "not_interested"
+      @listings = Listing.where(:not_interested => true)
     else
       @listings = Listing.where(:not_interested => false, :interested => false)
     end

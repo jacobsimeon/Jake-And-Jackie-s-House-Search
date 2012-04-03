@@ -10,8 +10,9 @@
       </a>
       <div class="nav-collapse pull-right">
         <ul class="nav">
-          <li><a href="/listings">All</a></li>
-          <li><a href="?interested=true">Favorites</a></li>
+          <% @sections.each do |section| %>
+            <%= navigation_link_for(section) %>
+          <% end %>
         </ul>
       </div>
     </div>
