@@ -7,8 +7,8 @@ class ListingPage
   attr_accessor :html
 
   def initialize(html, url="")
-    @html = html
-    @document = Nokogiri::HTML(html)
+    @html = html.read
+    @document = Nokogiri::HTML(@html)
     @url = url
   end
 
