@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.where(:not_interested => false, :interested => false)
     end
-    @listings = @listings.paginate :page => params[:page]
+    @listings = @listings.paginate :page => params[:page], :per_page => 15
   end
 
   def show
