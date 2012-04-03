@@ -17,11 +17,9 @@
 </div>
 
 <div class="container">
-  <div class="row">
-    <h1 class="span5" style="padding-bottom: 10px">A List of <%= @listings.count %>  homes</h1>
-  </div>
 
   <div class="row">
+    <h1 class="span5" style="padding-bottom: 10px">A List of <%= @listings.count %>  homes</h1>
     <div class="pull-right">
       <%= will_paginate @listings %>
     </div>
