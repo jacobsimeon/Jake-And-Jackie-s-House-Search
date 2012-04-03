@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'selenium-client'
-gem 'nokogiri'
 gem 'rails', '3.2.3'
-gem 'rspec-rails'
 gem "paperclip", "~> 3.0"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,7 +8,7 @@ gem "paperclip", "~> 3.0"
 gem 'sqlite3'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'factory_girl_rails'
+gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,7 +18,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+
+group :test do
+  gem 'selenium-client'
+  gem 'nokogiri'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
