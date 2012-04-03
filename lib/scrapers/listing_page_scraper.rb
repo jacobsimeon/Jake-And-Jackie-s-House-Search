@@ -27,16 +27,18 @@ class ListingPageScraper
       @listing.update_attributes scraped_listing.attributes
     else
       @listing = Listing.create scraped_listing.attributes
+      scraped_listing.image_paths.each do |image_path|
+        full_path = @root + image_path
+        puts "attaching image: #{full_path}"
+        listing_image = ListingImage.new
+        file = open full_path 
+        puts file
+        listing_image.image = file
+        listing_image.listing = @listing
+        listing_image.save
+      end
     end
     @listing.save
-    scraped_listing.image_paths.each do |image_path|
-      puts "attaching image: #{image_path}"
-      listing_image = ListingImage.new
-      file = open @root + image_path
-      listing_image.image = file
-      listing_image.listing = @listing
-      listing_image.save
-    end
     @listing
   end
 
