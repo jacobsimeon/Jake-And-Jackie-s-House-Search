@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_filter do
-    @sections = ['undecided', 'interested', 'not_interested']
+    @sections = ['new', 'undecided', 'interested', 'not_interested']
     @active_section = (params[:list] || "undecided").downcase
   end
 
@@ -10,6 +10,8 @@ class ListingsController < ApplicationController
       @listings = Listing.where :interested => true
     when "not_interested"
       @listings = Listing.where(:not_interested => true)
+    when 'new'
+      @listings = Listing.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight)
     else
       @listings = Listing.where(:not_interested => false, :interested => false)
     end
