@@ -47,8 +47,6 @@ namespace :mls do
 
   task :import do
     Rake::Task["mls:scrape_results"].invoke
-    Rake::Task["mls:map_urls"].invoke
-    Rake::Task["mls:set_defaults"].invoke
   end
 
 end

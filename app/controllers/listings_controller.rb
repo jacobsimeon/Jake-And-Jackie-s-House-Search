@@ -11,7 +11,7 @@ class ListingsController < ApplicationController
     when "not_interested"
       @listings = Listing.where(:not_interested => true)
     when 'new'
-      @listings = Listing.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight)
+      @listings = Listing.where(:created_at => (Time.now.midnight)..(Time.now + 1.day).midnight)
     else
       @listings = Listing.where(:not_interested => false, :interested => false)
     end
