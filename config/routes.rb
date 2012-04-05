@@ -9,7 +9,7 @@ Homes::Application.routes.draw do
     end
   end
 
-  root :to => "lists/undecided"
+  root :to => "lists#show", :id => "undecided"
     
 
 end
