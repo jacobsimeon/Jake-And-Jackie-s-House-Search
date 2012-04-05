@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403012853) do
+ActiveRecord::Schema.define(:version => 20120405040451) do
 
   create_table "listing_images", :force => true do |t|
     t.integer  "listing_id"
@@ -31,14 +31,20 @@ ActiveRecord::Schema.define(:version => 20120403012853) do
     t.string   "state"
     t.string   "zip"
     t.string   "price"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "url"
-    t.boolean  "interested",     :default => false, :null => false
-    t.boolean  "not_interested", :default => false, :null => false
     t.text     "html"
+    t.integer  "list_id"
   end
 
   add_index "listings", ["mls_number"], :name => "index_listings_on_mls_number", :unique => true
+
+  create_table "lists", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end

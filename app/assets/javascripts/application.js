@@ -16,11 +16,5 @@
 //
 
 $(function(){
-  $('a.listing-details').click(function(e){
-    e.preventDefault();
-    $.get(this.href, function(data){
-      $(data).modal();
-    });
-    return false;
-  });
+  $('a#add-list').popover();
 });

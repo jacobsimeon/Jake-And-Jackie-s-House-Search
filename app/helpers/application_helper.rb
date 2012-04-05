@@ -7,12 +7,11 @@ module ApplicationHelper
     end
   end
 
-  def navigation_link_for(section)
+  def navigation_link_for(list)
     list_options = {}
-    list_options[:class] = "active" if section == @active_section
+    list_options[:class] = "active" if list == @list
     content_tag(:li, list_options) do
-      link_name = section.split('_').each { |s| s.capitalize! }.join(' ')
-      link_to link_name, :list => section
+      link_to list.friendly_name, list_path(list)
     end
   end
 end

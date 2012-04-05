@@ -13,6 +13,7 @@ class ListingPageScraper
   end
 
   def scrape_pages
+    @undecided = List.find_by_name "undecided"
     @urls.each do |uri|
       puts "scraping #{uri}"
       listing = ListingPage.new open(uri), uri
@@ -27,6 +28,7 @@ class ListingPageScraper
       @listing.update_attributes scraped_listing.attributes
     else
       @listing = Listing.create scraped_listing.attributes
+      @listing.list = @undecided
       scraped_listing.image_paths.each do |image_path|
         full_path = @root + image_path
         puts "attaching image: #{full_path}"

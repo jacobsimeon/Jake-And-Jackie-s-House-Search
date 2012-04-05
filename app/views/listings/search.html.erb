@@ -1,0 +1,74 @@
+
+
+<div class="container">
+
+  <div class="row">
+    <h1 class="span3 pull-left" style="margin-top:20px" >
+      <%= pluralize(@listings.count, 'result') %>
+    </h1>
+    <div class="pull-right">
+      <%= will_paginate @listings %>
+    </div>
+  </div>
+
+  <div class="row" style="clear: both">
+    <% @listings.each do |listing| %>
+      <div class="span4 pull-left listing">
+        <div style="margin: 10px" >
+          <div class="row">
+
+            <h3 class="address span3">
+              <%= link_to listing.street_address, listing.url %>
+            </h3>
+
+            <div class="btn-group pull-right">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+               List 
+               <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <% @lists.each do |list| %>
+                  <%= link_to list.friendly_name, list_add_listing_path(list, listing), :method => :put %> 
+                <% end %>
+                <a href="#">
+                  <i class="icon-plus"></i>
+                  New List
+                </a>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="span3" >
+              <%= link_to listing_image(listing), listing_path(listing) %>
+            </div>
+          </div>
+
+          <div class="row">
+            <h3 class="span2">
+              $<%= listing.price %>
+            </h3>
+            <h5 class="pull-right">
+              MLS #<%= listing.mls_number %>
+            </h5>
+          </div>
+
+          <div class="row">
+            <h5 class="span3">
+              <%= listing.city %>, <%= listing.state %> <%= listing.zip %>
+            </h5>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="pull-right">
+      <%= will_paginate @listings %>
+    </div>
+  </div>
+
+</div> <!-- /container -->
