@@ -14,4 +14,5 @@ module ApplicationHelper
       link_to list.friendly_name, list_path(list)
     end
   end
+
 end

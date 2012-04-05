@@ -21,6 +21,9 @@
             Did you buy that house yet?
           </a>
           <ul class="nav">
+            <li>
+              <%= link_to "New", new_listings_listings_path %>
+            </li>
             <% @lists.each do |list| %>
               <%= navigation_link_for(list) %>
             <% end %>

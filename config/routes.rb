@@ -6,6 +6,7 @@ Homes::Application.routes.draw do
   resources :listings do
     collection do 
       get "search"
+      get "new_listings"
     end
   end
 
