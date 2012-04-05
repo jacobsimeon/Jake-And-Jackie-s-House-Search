@@ -8,6 +8,8 @@ Homes::Application.routes.draw do
       get "search"
     end
   end
+
+  root :to => "lists/undecided"
     
 
 end
