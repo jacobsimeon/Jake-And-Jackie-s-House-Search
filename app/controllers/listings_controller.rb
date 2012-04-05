@@ -13,7 +13,7 @@ class ListingsController < ApplicationController
   end
 
   def new_listings
-    @listings = Listing.where(:created_at => (Time.now.midnight)..(Time.now + 1.day).midnight)
+    @listings = Listing.where(:created_at => (Time.now - 1.day).midnight..(Time.now + 1.day).midnight)
     .paginate(:page => params[:page], :per_page => 15)
     render :template => "listings/search"
   end
